@@ -6,6 +6,7 @@ import {
   useLocation,
   useParams,
   useRouteMatch,
+  
 } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -34,6 +35,12 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  a {
+    color: white;
+    top: 10px;
+    padding: 10px;
+    transition: color 0.2s ease-in;
+  }
 `;
 
 const Overview = styled.div`
@@ -80,6 +87,10 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+
+
+
+
 
 interface RouteParams {
   coinId: string;
@@ -171,6 +182,10 @@ function Coin({}: ICoinProps) {
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <Link
+              to={{pathname: `/`}}
+              >home&rarr;
+        </Link>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
@@ -213,12 +228,13 @@ function Coin({}: ICoinProps) {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />
             </Route>
           </Switch>
+          
         </>
       )}
     </Container>

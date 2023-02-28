@@ -75,10 +75,10 @@ function Coins() {
   return (
     <Container>
       <Helmet>
-        <title>코인</title>
+        <title>coin</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
+        <Title>coin</Title>
         <button onClick={toggleDarkAtom}>Toggle Mode</button>
       </Header>
       {isLoading ? (
